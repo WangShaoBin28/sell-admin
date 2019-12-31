@@ -1,18 +1,74 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="home">
+        <el-container>
+            <el-header>
+                <HelloWorld></HelloWorld>
+            </el-header>
+            <el-main>
+                <el-table
+                        :data="widget_infos"
+                        style="width: 100%">
+                    <el-table-column
+                            prop="id"
+                            label="ID"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="title"
+                            label="标题"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="show_divider"
+                            label="显示分割线">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button
+                                    size="mini"
+                                    @click="handleEdit(scope.$index, scope.row)">编辑
+                            </el-button>
+                            <el-button
+                                    size="mini"
+                                    type="danger"
+                                    @click="handleDelete(scope.$index, scope.row)">删除
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-main>
+        </el-container>
+        <img :src="resDate.icon">
+        <el-button type="primary" @click="primaryClick">主要按钮</el-button>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+    import HelloWorld from "../components/HelloWorld";
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        data() {
+            return {
+                message: 'Hello Vue!',
+                resDate: [],
+                widget_infos: []
+            }
+        }, methods: {
+            primaryClick: function () {
+                this.axios.get('/apis/ithil_j/activity/movie_annual2017').then(res => {
+                    console.log(res.data);
+                    this.resDate = res.data.res.payload;
+                    this.widget_infos = res.data.res.widget_infos;
+                    console.log(this.resDate)
+                })
+            }, handleEdit(index, row) {
+                console.log(index, row);
+            },
+            handleDelete(index, row) {
+                console.log(index, row);
+            }
+        }, components: {
+            HelloWorld
+        }
+    }
 </script>
