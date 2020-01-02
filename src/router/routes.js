@@ -1,7 +1,7 @@
 export default [
     {
         path: '/',
-        name: 'home',
-        component: () => import ('../views/Home.vue')//懒加载
+        name: '卖家商城',
+        component: () => import ('../views/Index')//懒加载
     }
 ]
