@@ -13,7 +13,7 @@
                 <el-container>
                     <el-main>
                         主体
-
+                        <router-view></router-view>
                     </el-main>
                     <el-footer>
                         <Footer></Footer>
