@@ -7,15 +7,15 @@ import store from '@/store'
 import Qs from 'qs'
 import { Message } from 'element-ui'
 const BASE_URL = process.env.VUE_APP_API_URL; // 第二节配置的url 可以读取 一定要VUE_APP_A为前缀
+// const NODE_ENV = process.env.NODE_ENV
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 let config = {
     baseURL: BASE_URL,
     timeout: 60 * 1000, // Timeout
-    withCredentials: true, // Check cross-site Access-Control axios支持跨域cookie
+    withCredentials: false, // Check cross-site Access-Control axios支持跨域cookie 在生产环境要禁用
 };
 
 const _axios = axios.create(config);
