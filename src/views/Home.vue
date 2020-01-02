@@ -45,6 +45,7 @@
 
 <script>
     import HelloWorld from "../components/HelloWorld";
+    import API from '@/sdk/request-url';
 
     export default {
         data() {
@@ -55,7 +56,13 @@
             }
         }, methods: {
             primaryClick: function () {
-                this.axios.get('/apis/ithil_j/activity/movie_annual2017').then(res => {
+                /*  this.axios.get('/apis/ithil_j/activity/movie_annual2017').then(res => {
+                      console.log(res.data);
+                      this.resDate = res.data.res.payload;
+                      this.widget_infos = res.data.res.widget_infos;
+                      console.log(this.resDate)
+                  });*/
+                API.info().then(res => {
                     console.log(res.data);
                     this.resDate = res.data.res.payload;
                     this.widget_infos = res.data.res.widget_infos;
