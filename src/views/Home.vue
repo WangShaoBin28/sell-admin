@@ -63,20 +63,20 @@
                       this.widget_infos = res.data.res.widget_infos;
                       console.log(this.resDate)
                   });*/
-                /*API.info().then(res => {
+                API.info().then(res => {
                     console.log(res.data);
                     this.resDate = res.data.res.payload;
                     this.widget_infos = res.data.res.widget_infos;
                     console.log(this.resDate)
-                })*/
-                API.info2().then(res => {
+                })
+                /*API.info2().then(res => {
                     Message({
                         message: res.data.content,
                         type: 'success',
                         duration: 5 * 1000
                     })
                     console.log(res.data);
-                })
+                })*/
             }, handleEdit(index, row) {
                 console.log(index, row);
             },
