@@ -4,7 +4,7 @@ module.exports = {
         port: 8000,
         proxy: {
             '/apis': {
-                target: 'https://movie.douban.com/',  // target host
+                target: 'http://127.0.0.1:5004/',  // target host
                 ws: true,  // proxy websockets
                 changeOrigin: true,  // needed for virtual hosted sites
                 pathRewrite: {
